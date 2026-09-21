@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#061014">
+  <meta name="description" content="Drakken Lineage: a canon-disciplined evolutionary lineage laboratory for Starsilk.">
+  <title>Drakken Lineage</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#workspace">Skip to workspace</a>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-block">
+        <div class="brand-kicker">STARSILK / DRAKKEN BIOARCHIVE</div>
+        <h1>DRAKKEN <span>//</span> LINEAGE</h1>
+      </div>
+      <div class="status-strip" aria-label="Dataset status">
+        <span><b id="canonCount">0</b> source-backed nodes</span>
+        <span><b id="unknownCount">0</b> unknown slots</span>
+        <span class="seal">CANON FIREWALL ACTIVE</span>
+      </div>
+    </header>
+
+    <aside class="rail" aria-label="Primary navigation">
+      <nav id="nav"></nav>
+      <div class="rail-note">
+        <span class="tiny-label">CENTRAL LAW</span>
+        <p>A descendant must carry its history in its body.</p>
+      </div>
+    </aside>
+
+    <main id="workspace" class="workspace" tabindex="-1">
+      <section id="view-network" class="view is-active" data-view="network">
+        <div class="view-heading">
+          <div><span class="eyebrow">RETICULATE PHYLOGENY</span><h2>Lineage Network</h2></div>
+          <div class="toolbar">
+            <button class="chip is-active" data-edge-mode="all">All inheritance</button>
+            <button class="chip" data-edge-mode="body">Body only</button>
+            <button class="chip" data-edge-mode="macro">Macro only</button>
+          </div>
+        </div>
+        <div class="network-layout">
+          <div class="graph-panel panel">
+            <svg id="lineageGraph" viewBox="0 0 1200 680" role="img" aria-label="Interactive Drakken lineage network"></svg>
+          </div>
+          <aside id="inspector" class="inspector panel" aria-live="polite"></aside>
+        </div>
+      </section>
+
+      <section id="view-registry" class="view" data-view="registry">
+        <div class="view-heading"><div><span class="eyebrow">COMPARATIVE MORPHOLOGY</span><h2>Specimen Registry</h2></div></div>
+        <div class="registry-controls panel">
+          <label>Filter records <input id="registrySearch" type="search" placeholder="strain, function, status…"></label>
+          <label>Evidence state <select id="registryStatus"><option value="all">All</option><option value="canon">Source-backed</option><option value="unknown">Unknown</option><option value="provisional">Provisional</option></select></label>
+        </div>
+        <div id="registryGrid" class="registry-grid"></div>
+      </section>
+
+      <section id="view-matrix" class="view" data-view="matrix">
+        <div class="view-heading"><div><span class="eyebrow">CHARACTER MATRIX</span><h2>Homology Ledger</h2></div></div>
+        <div class="panel table-wrap"><table id="matrixTable"><thead><tr><th>Character</th><th>Structure</th><th>War function</th><th>State</th><th>Mechanism</th><th>Confidence</th></tr></thead><tbody></tbody></table></div>
+      </section>
+
+      <section id="view-kernel" class="view" data-view="kernel">
+        <div class="view-heading"><div><span class="eyebrow">DEVELOPMENTAL BIOLOGY</span><h2>Mother Kernel</h2></div></div>
+        <div class="kernel-grid" id="kernelGrid"></div>
+      </section>
+
+      <section id="view-compiler" class="view" data-view="compiler">
+        <div class="view-heading"><div><span class="eyebrow">DERIVATION ENGINE</span><h2>Morphogenesis Compiler</h2></div><span class="warning-tag">OUTPUT IS NON-CANON UNTIL RATIFIED</span></div>
+        <div class="compiler-grid">
+          <form id="compilerForm" class="panel compiler-form">
+            <label>Ancestral strain<select id="ancestorSelect" required></select></label>
+            <label>Post-Wall niche<input id="nicheInput" required placeholder="e.g. narrow mineral tunnels"></label>
+            <label>Primary survival pressure<textarea id="pressureInput" required placeholder="What became expensive, unavailable, or dangerous?"></textarea></label>
+            <label>Retained ancestral structure<textarea id="retainInput" required placeholder="Name a source-backed structure that survives or changes function."></textarea></label>
+            <label>Proposed loss or reduction<textarea id="lossInput" required placeholder="Which expensive war-era system is reduced or lost?"></textarea></label>
+            <label>Macro inheritance<select id="macroSelect"><option value="none">No cross-lineage Macro proposed</option></select></label>
+            <div class="form-actions"><button class="primary" type="submit">Compile descendant</button><button type="button" id="clearCompiler">Clear</button></div>
+          </form>
+          <div id="compilerOutput" class="panel compiler-output empty-state"><p>Supply ancestry and selection pressure. The compiler will test derivation before describing appearance.</p></div>
+        </div>
+      </section>
+
+      <section id="view-evidence" class="view" data-view="evidence">
+        <div class="view-heading"><div><span class="eyebrow">TWO TRUTHS</span><h2>Evidence & Paleontology</h2></div></div>
+        <div class="truth-grid">
+          <article class="panel truth-card"><span class="truth-code">A</span><h3>Authorial truth</h3><p>What the project sources establish outside the fiction. This lane controls canon status and may label gaps UNKNOWN rather than filling them.</p></article>
+          <article class="panel truth-card"><span class="truth-code">D</span><h3>Drakken paleontology</h3><p>What post-Wall scholars could reasonably reconstruct from specimens, traces, archives, Macro evidence, and inferred homology. Consensus may lag authorial truth.</p></article>
+        </div>
+        <div class="panel evidence-list" id="evidenceList"></div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
