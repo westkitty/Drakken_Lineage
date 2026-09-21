@@ -38,8 +38,9 @@ if(!chrome){
 }
 
 const args=[
-  '--headless=new','--no-sandbox','--disable-dev-shm-usage',
-  '--use-gl=swiftshader','--enable-webgl','--ignore-gpu-blocklist',
+  '--headless=new','--no-sandbox','--disable-dev-shm-usage','--disable-gpu-sandbox',
+  '--enable-unsafe-swiftshader','--use-gl=angle','--use-angle=swiftshader',
+  '--enable-webgl','--ignore-gpu-blocklist',
   '--virtual-time-budget=6500','--dump-dom',
   `http://127.0.0.1:${port}/`
 ];
