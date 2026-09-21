@@ -2,6 +2,19 @@
 
 A canon-disciplined evolutionary lineage laboratory for Starsilk's Drakken.
 
+The current registry is source-grounded against the integrated Drakken Terraforming Compendium in Google Drive and cross-checked against later Starsilk meta-canon files.
+
+## Current Compendium coverage
+
+- **58 named strain entries** represented from the integrated Compendium.
+- **8 family labels** represented.
+- **35 strains** are tagged as the core-count roster described by the later 37-entry meta-canon.
+- **23 additional integrated entries** are retained rather than discarded.
+- **Ringthroat** and **Gorevault** are retained as locked expansion entries.
+- The remaining expansion entries are visible as **provisional** until the source-count conflict is explicitly reconciled.
+
+The count conflict is intentional and visible in the application: the integrated Compendium contains 60 full entries (Egg + 58 strains + Mother), while later meta-canon documents still describe 37 total entries (Egg + 35 strains + Mother). The repository does not silently choose one history and erase the other.
+
 The project models Drakken history as two simultaneous inheritance systems:
 
 - **Body ancestry** — ordinary descent between engineered organisms.
@@ -15,21 +28,11 @@ Production URL:
 
 `https://westkitty.github.io/Drakken_Lineage/`
 
-Deployment is handled by `.github/workflows/pages.yml`. The workflow validates the project, stages only the browser-facing files, and deploys them with GitHub Pages Actions.
-
-GitHub requires one repository-level setting before the first deployment:
-
-1. Open **Settings → Pages**.
-2. Under **Build and deployment → Source**, choose **GitHub Actions**.
-3. Open **Actions → Deploy GitHub Pages** and run the workflow, or make any site-file commit to `main`.
-
-After that one-time switch, future changes to the site files deploy automatically.
+Deployment is handled by `.github/workflows/pages.yml`. Site-code and data changes on `main` validate and deploy automatically.
 
 ## Run locally
 
-Open `index.html` directly in a modern browser. No build step or server is required.
-
-For a local HTTP server:
+Open `index.html` directly in a modern browser, or use:
 
 ```bash
 python3 -m http.server 8000
@@ -45,14 +48,16 @@ npm test
 
 ## Canon policy
 
-The seeded dataset contains only source-backed war-era records and explicit unknown/provisional slots. Generated compiler output is **not canon** unless separately ratified by the human canon owner.
+Direct Compendium entries are always preserved as source-backed records. A record's **canon state** is separate from its **source presence**. Unknowns and contradictions are represented rather than silently filled or discarded.
+
+Generated Morphogenesis Compiler output is **not canon** unless separately ratified by the human canon owner.
 
 ## Core files
 
 - `index.html` — application shell
 - `styles.css` — visual system
-- `app.js` — interactions, rendering, local state, compiler
-- `data/lineage.js` — canonical/provisional lineage dataset
-- `data/schema.json` — portable record schema
+- `app.js` — interactions, filtering, rendering, compiler
+- `data/lineage.js` — source-backed Compendium roster and lineage dataset
+- `data/schema.json` — portable descendant-record schema
 - `.github/workflows/pages.yml` — GitHub Pages deployment
 - `OPERATIONAL_STATE.md` — current project control plane

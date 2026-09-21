@@ -17,9 +17,10 @@
         <h1>DRAKKEN <span>//</span> LINEAGE</h1>
       </div>
       <div class="status-strip" aria-label="Dataset status">
-        <span><b id="canonCount">0</b> source-backed nodes</span>
-        <span><b id="unknownCount">0</b> unknown slots</span>
-        <span class="seal">CANON FIREWALL ACTIVE</span>
+        <span><b id="strainCount">0</b> strain records</span>
+        <span><b id="coreCount">0</b> core-count roster</span>
+        <span><b id="expandedCount">0</b> integrated expansion</span>
+        <span class="seal warning-seal">CATALOG CONFLICT TRACKED</span>
       </div>
     </header>
 
@@ -36,6 +37,7 @@
         <div class="view-heading">
           <div><span class="eyebrow">RETICULATE PHYLOGENY</span><h2>Lineage Network</h2></div>
           <div class="toolbar">
+            <label class="compact-control">Family <select id="networkGroup"><option value="overview">Family overview</option></select></label>
             <button class="chip is-active" data-edge-mode="all">All inheritance</button>
             <button class="chip" data-edge-mode="body">Body only</button>
             <button class="chip" data-edge-mode="macro">Macro only</button>
@@ -43,17 +45,18 @@
         </div>
         <div class="network-layout">
           <div class="graph-panel panel">
-            <svg id="lineageGraph" viewBox="0 0 1200 680" role="img" aria-label="Interactive Drakken lineage network"></svg>
+            <svg id="lineageGraph" viewBox="0 0 1200 760" role="img" aria-label="Interactive Drakken lineage network"></svg>
           </div>
           <aside id="inspector" class="inspector panel" aria-live="polite"></aside>
         </div>
       </section>
 
       <section id="view-registry" class="view" data-view="registry">
-        <div class="view-heading"><div><span class="eyebrow">COMPARATIVE MORPHOLOGY</span><h2>Specimen Registry</h2></div></div>
+        <div class="view-heading"><div><span class="eyebrow">COMPARATIVE MORPHOLOGY</span><h2>Compendium Registry</h2></div></div>
         <div class="registry-controls panel">
-          <label>Filter records <input id="registrySearch" type="search" placeholder="strain, function, status…"></label>
-          <label>Evidence state <select id="registryStatus"><option value="all">All</option><option value="canon">Source-backed</option><option value="unknown">Unknown</option><option value="provisional">Provisional</option></select></label>
+          <label>Filter records <input id="registrySearch" type="search" placeholder="strain, function, affinity, topology…"></label>
+          <label>Family <select id="registryGroup"><option value="all">All families</option></select></label>
+          <label>Canon state <select id="registryStatus"><option value="all">All</option><option value="canon">Canon / locked</option><option value="provisional">Integrated provisional</option></select></label>
         </div>
         <div id="registryGrid" class="registry-grid"></div>
       </section>
@@ -86,15 +89,16 @@
 
       <section id="view-evidence" class="view" data-view="evidence">
         <div class="view-heading"><div><span class="eyebrow">TWO TRUTHS</span><h2>Evidence & Paleontology</h2></div></div>
+        <div id="catalogConflictCard" class="panel conflict-card"></div>
         <div class="truth-grid">
           <article class="panel truth-card"><span class="truth-code">A</span><h3>Authorial truth</h3><p>What the project sources establish outside the fiction. This lane controls canon status and may label gaps UNKNOWN rather than filling them.</p></article>
           <article class="panel truth-card"><span class="truth-code">D</span><h3>Drakken paleontology</h3><p>What post-Wall scholars could reasonably reconstruct from specimens, traces, archives, Macro evidence, and inferred homology. Consensus may lag authorial truth.</p></article>
         </div>
+        <div id="sourceList" class="source-grid"></div>
         <div class="panel evidence-list" id="evidenceList"></div>
       </section>
     </main>
   </div>
-
   <script type="module" src="app.js"></script>
 </body>
 </html>
