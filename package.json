@@ -8,7 +8,8 @@
   },
   "scripts": {
     "build": "node scripts/build.mjs",
-    "test": "node tests/validate.mjs"
+    "test": "node tests/validate.mjs",
+    "smoke": "node scripts/smoke.mjs"
   },
   "dependencies": {
     "three": "0.186.0"

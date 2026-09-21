@@ -297,6 +297,8 @@ function setupThreeLineage(){
     throw new Error('Three.js lineage incomplete: one or more strain labels are missing.');
   }
   $('#networkResidentCount').textContent=`${strainObjects.size}/${strains.length}`;
+  document.documentElement.dataset.threeReady='true';
+  document.documentElement.dataset.strainResident=String(strainObjects.size);
 
   const raycaster=new THREE.Raycaster();
   const pointer=new THREE.Vector2();

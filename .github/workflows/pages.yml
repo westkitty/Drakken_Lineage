@@ -45,6 +45,9 @@ jobs:
       - name: Validate project and built artifact
         run: npm test
 
+      - name: Headless Three.js smoke
+        run: npm run smoke
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
