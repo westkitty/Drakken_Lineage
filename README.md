@@ -1,26 +1,42 @@
 # Drakken Lineage
 
-A canon-disciplined evolutionary lineage laboratory for Starsilk's Drakken.
+A canon-disciplined, Three.js-driven evolutionary lineage laboratory for Starsilk's Drakken.
 
-The current registry is source-grounded against the integrated Drakken Terraforming Compendium in Google Drive and cross-checked against later Starsilk meta-canon files.
+## Orbital Lineage Field
+
+The main lineage chart is now a real Three.js scene rather than an SVG family drill-down.
+
+- **All 58 documented strains are resident simultaneously.**
+- Eight family hubs orbit the Mother/Egg origin.
+- Every strain orbits its family hub while remaining visible and labeled.
+- Drag/touch rotates the camera.
+- Wheel/pinch zooms.
+- Tap/click a strain, family, Mother, Egg, or unresolved post-Wall node to inspect it.
+- Family and strain selectors focus the camera without hiding any other strains.
+- System motion and camera auto-orbit can be paused independently.
+- `prefers-reduced-motion` starts both automatic motions disabled.
+- The 3D runtime is **Three.js 0.186.0 (r186)**, pinned in `package.json` and copied into the deployed artifact at build time. No CDN runtime hotlink is required.
+
+The semantic DOM registry, homology ledger, Mother Kernel, Morphogenesis Compiler, evidence model, and canon/source-state distinctions remain intact.
 
 ## Current Compendium coverage
 
 - **58 named strain entries** represented from the integrated Compendium.
 - **8 family labels** represented.
-- **35 strains** are tagged as the core-count roster described by the later 37-entry meta-canon.
-- **23 additional integrated entries** are retained rather than discarded.
-- **Ringthroat** and **Gorevault** are retained as locked expansion entries.
-- The remaining expansion entries are visible as **provisional** until the source-count conflict is explicitly reconciled.
+- **35 strains** tagged as the later core-count roster.
+- **23 additional integrated entries** retained rather than discarded.
+- **Ringthroat** and **Gorevault** retained as locked expansion entries.
+- The remaining expansion entries remain visible as **provisional** until the source-count conflict is explicitly reconciled.
 
-The count conflict is intentional and visible in the application: the integrated Compendium contains 60 full entries (Egg + 58 strains + Mother), while later meta-canon documents still describe 37 total entries (Egg + 35 strains + Mother). The repository does not silently choose one history and erase the other.
+## Build
 
-The project models Drakken history as two simultaneous inheritance systems:
+```bash
+npm install
+npm run build
+npm test
+```
 
-- **Body ancestry** — ordinary descent between engineered organisms.
-- **Macro ancestry** — inherited executable biological architecture that may cross lineage boundaries.
-
-It also separates **authorial truth** from **in-universe Drakken paleontology**, tracks structural homologies, records confidence and evidence state, and provides a Morphogenesis Compiler for testing whether a proposed descendant can be biologically derived rather than merely styled as "Drakken."
+Serve `dist/` with any static HTTP server.
 
 ## GitHub Pages
 
@@ -28,36 +44,21 @@ Production URL:
 
 `https://westkitty.github.io/Drakken_Lineage/`
 
-Deployment is handled by `.github/workflows/pages.yml`. Site-code and data changes on `main` validate and deploy automatically.
-
-## Run locally
-
-Open `index.html` directly in a modern browser, or use:
-
-```bash
-python3 -m http.server 8000
-```
-
-Then open `http://localhost:8000`.
-
-## Validate
-
-```bash
-npm test
-```
+GitHub Actions installs the exact pinned Three.js package, builds `dist/`, validates the output, and deploys the resulting static artifact.
 
 ## Canon policy
 
-Direct Compendium entries are always preserved as source-backed records. A record's **canon state** is separate from its **source presence**. Unknowns and contradictions are represented rather than silently filled or discarded.
+Direct Compendium entries are preserved as source-backed records. Source presence and canon authority are separate dimensions. Unknowns and contradictions remain explicit rather than being silently filled or discarded.
 
 Generated Morphogenesis Compiler output is **not canon** unless separately ratified by the human canon owner.
 
 ## Core files
 
-- `index.html` — application shell
-- `styles.css` — visual system
-- `app.js` — interactions, filtering, rendering, compiler
+- `index.html` — application shell and local import map
+- `styles.css` — visual system and 3D-label styling
+- `app.js` — Three.js scene, orbital interaction, registry, compiler, and evidence UI
 - `data/lineage.js` — source-backed Compendium roster and lineage dataset
-- `data/schema.json` — portable descendant-record schema
+- `scripts/build.mjs` — deterministic static build and local Three.js vendoring
+- `tests/validate.mjs` — data, Three.js integration, build, privacy, and residency checks
 - `.github/workflows/pages.yml` — GitHub Pages deployment
 - `OPERATIONAL_STATE.md` — current project control plane

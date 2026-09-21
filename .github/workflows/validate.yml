@@ -10,4 +10,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm test
+      - name: Install pinned runtime dependency
+        run: npm install --no-audit --no-fund
+      - name: Build Pages artifact
+        run: npm run build
+      - name: Validate
+        run: npm test

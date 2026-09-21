@@ -9,6 +9,7 @@ on:
       - styles.css
       - app.js
       - data/**
+      - scripts/build.mjs
       - package.json
       - tests/**
       - .github/workflows/pages.yml
@@ -35,26 +36,22 @@ jobs:
         with:
           node-version: 22
 
-      - name: Validate project
+      - name: Install pinned Three.js runtime
+        run: npm install --no-audit --no-fund
+
+      - name: Build static site
+        run: npm run build
+
+      - name: Validate project and built artifact
         run: npm test
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
-      - name: Stage static site
-        shell: bash
-        run: |
-          set -euo pipefail
-          rm -rf _site
-          mkdir -p _site/data
-          cp index.html styles.css app.js _site/
-          cp data/lineage.js data/schema.json _site/data/
-          touch _site/.nojekyll
-
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: _site
+          path: dist
 
   deploy:
     needs: build

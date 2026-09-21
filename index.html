@@ -4,9 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#061014">
-  <meta name="description" content="Drakken Lineage: a canon-disciplined evolutionary lineage laboratory for Starsilk.">
+  <meta name="description" content="Drakken Lineage: an interactive Three.js evolutionary lineage laboratory for Starsilk.">
   <title>Drakken Lineage</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./vendor/three.module.js",
+        "three/addons/": "./vendor/addons/"
+      }
+    }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#workspace">Skip to workspace</a>
@@ -18,6 +26,7 @@
       </div>
       <div class="status-strip" aria-label="Dataset status">
         <span><b id="strainCount">0</b> strain records</span>
+        <span><b id="networkResidentCount">0/0</b> resident in 3D</span>
         <span><b id="coreCount">0</b> core-count roster</span>
         <span><b id="expandedCount">0</b> integrated expansion</span>
         <span class="seal warning-seal">CATALOG CONFLICT TRACKED</span>
@@ -34,18 +43,33 @@
 
     <main id="workspace" class="workspace" tabindex="-1">
       <section id="view-network" class="view is-active" data-view="network">
-        <div class="view-heading">
-          <div><span class="eyebrow">RETICULATE PHYLOGENY</span><h2>Lineage Network</h2></div>
-          <div class="toolbar">
-            <label class="compact-control">Family <select id="networkGroup"><option value="overview">Family overview</option></select></label>
-            <button class="chip is-active" data-edge-mode="all">All inheritance</button>
-            <button class="chip" data-edge-mode="body">Body only</button>
-            <button class="chip" data-edge-mode="macro">Macro only</button>
+        <div class="view-heading network-heading">
+          <div>
+            <span class="eyebrow">THREE.JS RETICULATE PHYLOGENY</span>
+            <h2>Orbital Lineage Field</h2>
+            <p class="view-deck">Every documented strain remains resident in the same navigable lineage space. Family focus changes the camera, never the population.</p>
+          </div>
+          <div class="toolbar network-toolbar">
+            <label class="compact-control">Focus family
+              <select id="networkFocusFamily"><option value="all">All families</option></select>
+            </label>
+            <label class="compact-control">Find strain
+              <select id="networkFindStrain"><option value="">Choose strain…</option></select>
+            </label>
+            <button id="toggleSystemMotion" type="button" aria-pressed="true">System motion: on</button>
+            <button id="toggleCameraOrbit" type="button" aria-pressed="true">Camera orbit: on</button>
+            <button id="resetOrbit" type="button">Reset view</button>
           </div>
         </div>
         <div class="network-layout">
-          <div class="graph-panel panel">
-            <svg id="lineageGraph" viewBox="0 0 1200 760" role="img" aria-label="Interactive Drakken lineage network"></svg>
+          <div class="graph-panel three-graph-panel panel">
+            <div class="network-legend">
+              <span><b>58 / 58</b> strain nodes are loaded simultaneously</span>
+              <span>Drag to orbit · wheel/pinch to zoom · tap a node to inspect</span>
+            </div>
+            <div id="threeStage" class="three-stage" tabindex="0" aria-label="Interactive three-dimensional Drakken lineage field. Use the family and strain selectors for keyboard-accessible focus.">
+              <div id="threeFallback" class="three-fallback" hidden>3D rendering is unavailable in this browser. The complete strain registry remains available in the Compendium Registry view.</div>
+            </div>
           </div>
           <aside id="inspector" class="inspector panel" aria-live="polite"></aside>
         </div>
@@ -99,6 +123,7 @@
       </section>
     </main>
   </div>
-  <script type="module" src="app.js"></script>
+
+  <script type="module" src="./app.js"></script>
 </body>
 </html>
