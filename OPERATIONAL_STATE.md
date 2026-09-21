@@ -1,87 +1,93 @@
 # Drakken Lineage Operational State
 <!-- operational-state:metadata
-{"schema_version":1,"project_id":"drakken-lineage","project_name":"Drakken Lineage","project_root":"repository root","artifact_path":"index.html","state_revision":4,"last_updated":"2026-09-21T21:32:00Z","current_baseline":{"identity":"site/data commit 4a44526f1a075df1fc323e2dccd1e7dcd84e93aa","state":"partially-verified","last_verified":"2026-09-21T21:31:04Z"},"scope_boundaries":["Drakken lineage web laboratory and repository-native canon data only"],"linked_parent_state":null}
+{"schema_version":1,"project_id":"drakken-lineage","project_name":"Drakken Lineage","project_root":"repository root","artifact_path":"index.html","state_revision":5,"last_updated":"2026-09-21T21:55:00Z","current_baseline":{"identity":"Three.js orbital lineage main a28fe52c5c215197cbcb6ee63da4c1e9786b7e3e","state":"partially-verified","last_verified":"2026-09-21T21:54:23Z"},"scope_boundaries":["Drakken lineage web laboratory and repository-native canon data only"],"linked_parent_state":null}
 -->
 
 ## 1. Project Identity and Scope
 Interactive Starsilk Drakken lineage laboratory. The repository models body ancestry, Macro ancestry, homology, evidence state, developmental unknowns, Compendium source state, and non-canon descendant compilation.
 
 ## 2. Current Baseline
-The full integrated Compendium roster is published on GitHub `main` and deployed through GitHub Pages. The browser-facing baseline is commit `4a44526f1a075df1fc323e2dccd1e7dcd84e93aa`.
+The browser-facing baseline is commit `a28fe52c5c215197cbcb6ee63da4c1e9786b7e3e`. The main lineage visualization is now a Three.js orbital field rather than the earlier SVG/family-drilldown chart. GitHub Pages deployment run `35659766877` completed successfully for this baseline.
 
 ## 3. Artifact Contract
-Browser-openable zero-dependency web application; tablet-friendly; canon and inference visibly separated; direct source entries preserved even when source authorities disagree; generated descendant output never silently promoted to canon; GitHub Pages deployment publishes only browser-facing files.
+Tablet-friendly interactive web application; all 58 documented strains must remain resident in the same lineage visualization; family focus may move the camera but must not remove strains; canon and inference remain visibly separated; direct source entries remain preserved when authorities disagree; generated descendant output never silently becomes canon.
 
 ## 4. Active Invariants
 - **INV-001 — History in the body:** Every accepted descendant must preserve traceable ancestry through retained, transformed, lost, or repurposed structures.
 - **INV-002 — Canon firewall:** Unknown and provisional material must remain visibly distinct from locked canon.
-- **INV-003 — Dual ancestry:** Body descent and Macro inheritance are separate edge types.
+- **INV-003 — Dual ancestry:** Body descent and Macro inheritance remain separate edge types.
 - **INV-004 — Politics is not phylogeny:** Civic faction membership must not imply biological lineage.
 - **INV-005 — Function before face:** Morphology must derive from ancestral job, selection pressure, and structure before aesthetics.
-- **INV-006 — Pages publication boundary:** Deployment stages only `index.html`, `styles.css`, `app.js`, and required `data/` browser assets; project state and repository internals are not part of the public site artifact.
-- **INV-007 — Source presence is not canon status:** A direct Compendium entry must remain represented even when its placement conflicts with later meta-canon; source-backed expansion records may remain provisional.
+- **INV-006 — Pages publication boundary:** Deployment publishes only browser-facing build output; project state and repository internals are excluded.
+- **INV-007 — Source presence is not canon status:** A direct Compendium entry remains represented even when its placement conflicts with later meta-canon.
 - **INV-008 — Private-source boundary:** Public repository content must not expose private Drive URLs, Drive IDs, account addresses, local user paths, or connector-local identifiers.
+- **INV-009 — All-strain residency:** The 3D lineage scene must instantiate one node and one label for every entry in the 58-strain roster before reporting ready.
+- **INV-010 — Focus without filtering:** Family and strain focus controls may reframe the camera but must never hide non-focused strains.
+- **INV-011 — Reduced-motion respect:** Automatic system motion and camera auto-orbit start disabled when `prefers-reduced-motion` is active.
 
 ## 5. Verified Working Behavior
-- **VER-001 — Repository validator:** `npm test` passes on the full-roster validation branch and on `main`.
-- **VER-002 — Full integrated roster import:** The repository contains 58 named direct strain records across eight family labels, plus Egg and Mother, matching the 60 direct entries parsed from the integrated Compendium.
-- **VER-003 — Core/expansion classification:** Tests enforce exactly 35 `core-35` strains and 23 additional integrated entries. Ringthroat and Gorevault remain locked expansion canon entries.
-- **VER-004 — Public-boundary scan:** Generated public files pass checks excluding Drive URLs, account email addresses, local `/Users/` paths, and connector-style file IDs.
-- **VER-005 — GitHub Pages deployment:** GitHub Pages workflow run `35657573739` completed successfully for browser-facing commit `4a44526f1a075df1fc323e2dccd1e7dcd84e93aa`, including validation, Pages configuration, artifact upload, and deployment.
-- **VER-006 — Remote file tree:** GitHub `main` contains the expanded application, source-grounded data, tests, workflows, README, and operational state.
+- **VER-001 — Repository build/validator:** GitHub Actions installs dependencies, builds the static artifact, and passes the deterministic validator on branch and `main`.
+- **VER-002 — Full integrated roster:** 58 named direct strain records across eight family labels remain in the dataset, plus Egg and Mother.
+- **VER-003 — Core/expansion classification:** Tests enforce 35 `core-35` strains and 23 additional integrated entries; Ringthroat and Gorevault remain locked expansion canon entries.
+- **VER-004 — Three.js dependency contract:** Three.js is pinned to `0.186.0` (r186), installed at build time, and copied into the deployed artifact with OrbitControls, CSS2DRenderer, and the Three.js license; no runtime CDN hotlink is required.
+- **VER-005 — 58/58 scene construction contract:** Source validation requires the Three.js construction loop, runtime residency assertion, strain labels, camera orbit controls, raycasting, and visible `58/58` residency copy. Build validation passes.
+- **VER-006 — GitHub Pages deployment:** Pages run `35659766877` completed successfully, including dependency installation, static build, validator, Pages configuration, artifact upload, and deployment.
+- **VER-007 — Public-boundary scan:** Generated public data continues to exclude checked private-source identifiers.
 
 ## 6. Known Not Working
-None established.
+None established in the production browser path.
 
 ## 7. Implemented but Unverified
-- **UNV-001 — Interactive lineage graph user journey:** Source and structural tests pass, including full-family data routing; rendered browser interaction has not been manually observed in this runtime.
-- **UNV-002 — Compendium Registry user journey:** Search, family filters, canon-state filters, and 58-strain rendering are implemented and structurally validated but not manually browser-observed here.
-- **UNV-003 — Morphogenesis Compiler user journey:** Source and structural tests pass; form interaction and downloaded JSON have not been manually browser-observed here.
-- **UNV-004 — Responsive tablet layout:** Responsive CSS is implemented but has not been visually verified on the target tablet in this runtime.
-- **UNV-005 — Live HTTP render:** GitHub reports the Pages deployment successful, but this runtime has not independently rendered the deployed URL and inspected CSS/module/data loading.
+- **UNV-001 — Live WebGL render:** This runtime cannot directly render and inspect the deployed GitHub Pages site. GitHub's headless Chrome smoke cannot establish the Three.js ready marker reliably and is explicitly non-blocking.
+- **UNV-002 — Orbital interaction feel:** OrbitControls, system motion, camera auto-orbit, click/tap raycasting, camera focus tweening, zoom, and reset controls are implemented but have not been manually observed in a representative live browser from this runtime.
+- **UNV-003 — All 58 labels visually legible simultaneously:** All 58 label objects are instantiated by construction, but overlap/readability in the final 3D camera view requires live visual review.
+- **UNV-004 — Target tablet behavior:** Responsive controls, DPR cap, touch OrbitControls, and mobile layout are implemented but not yet verified on the target tablet.
+- **UNV-005 — Morphogenesis Compiler browser export:** Source and structural validation pass; downloaded JSON has not been manually exercised in a live browser from this runtime.
 
 ## 8. Unknown or Evidence-Stale State
-- **UNK-001 — Catalog-count authority conflict:** The integrated 2026-05-20 Compendium contains 60 direct full entries: Egg, Mother, and 58 named strains across eight family labels. Later 2026-07-30 meta-canon sources still state 37 total entries: Egg, 35 strains across five archetypes, and Mother. This conflict remains unresolved rather than silently flattened.
+- **UNK-001 — Catalog-count authority conflict:** The integrated 2026-05-20 Compendium contains 60 direct full entries: Egg, Mother, and 58 named strains across eight family labels. Later 2026-07-30 meta-canon sources still state 37 total entries: Egg, 35 strains across five archetypes, and Mother.
 - **UNK-002 — Universal Mother developmental kernel:** Source evidence remains insufficient beyond origin/Egg/strain-emergence anchors.
-- **UNK-003 — Canonical post-Wall clades:** No post-Wall descendant names or morphologies were invented by the roster import.
+- **UNK-003 — Canonical post-Wall clades:** No post-Wall descendant names or morphologies were invented by the visualization migration.
 
 ## 9. Pending Work
+- Perform live desktop/tablet visual QA of the Three.js lineage field, especially label overlap, camera distances, touch behavior, and perceived motion.
 - Resolve or intentionally preserve the 60-entry integrated-roster versus 37-entry later-meta-canon conflict.
 - Ratify post-Wall descendant clades before promoting any generated record.
 - Add visual lineage plates only after canonical descendant anatomy exists.
-- Perform direct browser/tablet QA when a suitable runtime is available.
 
 ## 10. Active Decisions, Defaults, and Prohibitions
-- Zero external runtime dependencies for the initial app.
-- Direct Compendium presence and canon authority are separate dimensions.
-- The first 35 strains matching the later five-family × seven structure are tagged `core-35`.
-- Ringthroat and Gorevault are tagged `locked-expansion` and remain canon because current active canon separately locks their Blood Ring roles.
-- The other integrated entries beyond the core count remain visible as `integrated-expansion` and provisional until the count conflict is explicitly resolved.
+- The lineage visualization is vanilla Three.js using `WebGLRenderer`.
+- Three.js is pinned to `0.186.0` and deployed locally through the build artifact.
+- Ordinary interface controls, registry, evidence, and inspector remain semantic DOM rather than world-space UI.
+- All 58 strain nodes remain resident simultaneously; selectors change focus only.
+- System motion and camera auto-orbit are independently controllable.
+- Device pixel ratio is capped at 1.75 for mobile-sensitive rendering.
+- The project provides a non-3D fallback message while preserving the complete DOM registry if WebGL creation fails.
+- Direct Compendium presence and canon authority remain separate dimensions.
 - Do not use generic humanoid-dragon anatomy as a default.
 - Do not infer post-Wall biology from political faction.
-- GitHub Pages deploys through Actions, not by publishing the whole repository root.
 - Private Drive locations and identifiers must never be copied into the public repository.
+- GitHub headless-WebGL smoke is best-effort evidence only and must not be promoted to proof of live rendering.
 
 ## 11. Validation and Evidence Matrix
 | ID | Claim | State | Method | Recheck trigger |
 |---|---|---|---|---|
-| VER-001 | Full-roster validator passes | verified | GitHub Actions on branch and `main` | data/tests changes |
-| VER-002 | 58 strains / 8 families are represented | verified | deterministic roster assertions | Compendium import changes |
-| VER-003 | 35 core-count + 23 expansion classification is preserved | verified | deterministic test assertions | canon/count decision changes |
-| VER-004 | Public generated files contain no checked private-source identifiers | verified | boundary scan + repository test | source/import/publication changes |
-| VER-005 | Pages deployment for full-roster commit succeeds | verified | GitHub Actions run `35657573739` | Pages/site changes |
-| UNV-001 | Lineage network renders and filters all family views correctly | implemented-unverified | browser interaction | graph/data/UI changes |
-| UNV-002 | Registry search/filter experience works visually with all 58 strains | implemented-unverified | browser interaction | registry/data/UI changes |
-| UNV-003 | Compiler produces downloadable non-canon JSON correctly in browser | implemented-unverified | browser form/export | compiler changes |
-| UNV-004 | Tablet/mobile layout remains usable | implemented-unverified | responsive device review | CSS/layout changes |
-| UNV-005 | Production URL serves the complete app without runtime asset errors | implemented-unverified | live browser render | deployment/site changes |
+| VER-001 | Three.js dependency installs and static artifact builds | verified | GitHub Actions | package/build changes |
+| VER-002 | Dataset remains 58 strains / 8 families | verified | deterministic tests | Compendium changes |
+| VER-003 | Code constructs one 3D node and label per strain and asserts 58/58 residency | verified at source/build level | deterministic source/build checks | 3D scene changes |
+| VER-004 | Pages deploys the Three.js artifact successfully | verified | Pages run `35659766877` | deployment/site changes |
+| UNV-001 | Production browser actually initializes WebGL and renders the scene | implemented-unverified | live browser observation required | renderer/dependency/browser changes |
+| UNV-002 | Drag/touch orbit, zoom, click selection, auto-orbit, and focus controls feel correct | implemented-unverified | manual browser interaction | interaction/camera changes |
+| UNV-003 | All 58 labels are visually usable without unacceptable overlap | implemented-unverified | visual QA | layout/label/camera changes |
+| UNV-004 | Target tablet performance and touch UX are acceptable | implemented-unverified | target-device QA | rendering/layout changes |
 | UNK-001 | 60-entry integrated roster versus 37-entry later meta-canon authority | unresolved | source comparison | explicit canon reconciliation |
 
 ## 12. Current Change Scope and Impact Radius
-The completed change imported the full integrated Compendium roster into `data/lineage.js`, expanded graph/registry/compiler/evidence UI support, strengthened tests and privacy boundaries, updated README coverage, and redeployed Pages. No external Starsilk repository or Drive source was modified.
+The completed change replaces only the lineage visualization architecture and build/deployment path needed to support it. It preserves the full Compendium dataset, registry, evidence model, Mother Kernel, homology ledger, Morphogenesis Compiler, canon-status distinctions, and Pages destination. New runtime surfaces are Three.js, OrbitControls, CSS2DRenderer, local build vendoring, camera/touch interaction, orbital animation, and 3D labels.
 
 ## 13. Compact Revision Log
 - **r1 — 2026-09-21:** Initial repository control plane established alongside the first working lineage laboratory.
-- **r2 — 2026-09-21:** Remote repository publication and GitHub Actions validator verified; browser interaction remains explicitly unverified.
-- **r3 — 2026-09-21:** Added GitHub Pages deployment pipeline and recorded its then-active repository enablement blocker.
-- **r4 — 2026-09-21:** Imported all 60 direct integrated Compendium entries, represented all 58 strains across eight families, preserved the 35-versus-58 authority conflict, passed public-boundary checks, and verified successful GitHub Pages deployment.
+- **r2 — 2026-09-21:** Remote repository publication and GitHub Actions validator verified.
+- **r3 — 2026-09-21:** Added GitHub Pages deployment pipeline.
+- **r4 — 2026-09-21:** Imported all 60 direct integrated Compendium entries, representing all 58 strains across eight families.
+- **r5 — 2026-09-21:** Replaced the SVG lineage chart with a pinned Three.js orbital field where all 58 strains remain resident simultaneously; added camera orbit/zoom/focus, animated family and strain orbits, tap/click inspection, responsive controls, local Three.js build vendoring, and successful Pages deployment. Live visual/browser feel remains explicitly unverified.
