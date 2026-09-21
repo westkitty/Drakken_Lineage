@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Drakken Lineage Record",
+  "type": "object",
+  "required": ["id", "name", "status", "ancestry", "morphology", "evidence"],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "name": {"type": "string", "minLength": 1},
+    "status": {"enum": ["canon", "provisional", "unknown"]},
+    "ancestry": {
+      "type": "object",
+      "required": ["body", "macro"],
+      "properties": {
+        "body": {"type": "array", "items": {"type": "string"}},
+        "macro": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "morphology": {
+      "type": "object",
+      "required": ["retained", "reduced", "lost", "repurposed"],
+      "properties": {
+        "retained": {"type": "array", "items": {"type": "string"}},
+        "reduced": {"type": "array", "items": {"type": "string"}},
+        "lost": {"type": "array", "items": {"type": "string"}},
+        "repurposed": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "evidence": {"type": "array", "items": {"type": "string"}}
+  }
+}
