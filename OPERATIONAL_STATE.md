@@ -1,13 +1,13 @@
 # Drakken Lineage Operational State
 <!-- operational-state:metadata
-{"schema_version":1,"project_id":"drakken-lineage","project_name":"Drakken Lineage","project_root":"repository root","artifact_path":"index.html","state_revision":1,"last_updated":"2026-09-21T20:55:00Z","current_baseline":{"identity":"initial repository build","state":"current-baseline","last_verified":null},"scope_boundaries":["Drakken lineage web laboratory and repository-native canon data only"],"linked_parent_state":null}
+{"schema_version":1,"project_id":"drakken-lineage","project_name":"Drakken Lineage","project_root":"repository root","artifact_path":"index.html","state_revision":2,"last_updated":"2026-09-21T21:02:00Z","current_baseline":{"identity":"GitHub main c7c5c869da44d7a917a2e698eb1304a616fb4d55","state":"partially-verified","last_verified":"2026-09-21T20:59:44Z"},"scope_boundaries":["Drakken lineage web laboratory and repository-native canon data only"],"linked_parent_state":null}
 -->
 
 ## 1. Project Identity and Scope
 Interactive Starsilk Drakken lineage laboratory. The repository models body ancestry, Macro ancestry, homology, evidence state, developmental unknowns, and non-canon descendant compilation.
 
 ## 2. Current Baseline
-Initial implementation prepared for repository publication.
+Initial implementation published to GitHub `main`.
 
 ## 3. Artifact Contract
 Browser-openable zero-dependency web application; tablet-friendly; canon and inference visibly separated; generated descendant output never silently promoted to canon.
@@ -20,14 +20,15 @@ Browser-openable zero-dependency web application; tablet-friendly; canon and inf
 - **INV-005 — Function before face:** Morphology must derive from ancestral job, selection pressure, and structure before aesthetics.
 
 ## 5. Verified Working Behavior
-Pending initial automated and browser validation.
+- **VER-001 — Repository validator:** `npm test` passes locally and GitHub Actions completed successfully on `main` commit `c7c5c869da44d7a917a2e698eb1304a616fb4d55`.
+- **VER-002 — Remote file tree:** GitHub `main` contains the application shell, data/schema, validator, workflow, README, and operational state.
 
 ## 6. Known Not Working
 None established.
 
 ## 7. Implemented but Unverified
-- **UNV-001 — Interactive lineage graph:** Source implemented; browser interaction not yet visually verified.
-- **UNV-002 — Morphogenesis compiler:** Source implemented; browser interaction not yet visually verified.
+- **UNV-001 — Interactive lineage graph:** Source and structural tests pass; browser interaction not yet visually verified.
+- **UNV-002 — Morphogenesis compiler:** Source and structural tests pass; form/export user path not yet browser-verified.
 - **UNV-003 — Responsive tablet layout:** CSS implemented; device/browser path not yet visually verified.
 
 ## 8. Unknown or Evidence-Stale State
@@ -49,6 +50,8 @@ None established.
 ## 11. Validation and Evidence Matrix
 | ID | Claim | State | Method | Recheck trigger |
 |---|---|---|---|---|
+| VER-001 | Repository validator passes | verified | local `npm test` + GitHub Actions | validator/data changes |
+| VER-002 | Required repository file tree exists on `main` | verified | GitHub contents readback | repository publication changes |
 | UNV-001 | Lineage network renders and filters body/Macro edges | implemented-unverified | browser interaction | graph/data changes |
 | UNV-002 | Compiler produces explicit non-canon JSON with derivation warnings | implemented-unverified | form submission/export | compiler changes |
 | UNV-003 | Tablet/mobile layout remains usable | implemented-unverified | responsive browser review | CSS/layout changes |
@@ -58,3 +61,4 @@ Initial repository creation. All project files are within scope. No external Sta
 
 ## 13. Compact Revision Log
 - **r1 — 2026-09-21:** Initial repository control plane established alongside the first working lineage laboratory.
+- **r2 — 2026-09-21:** Remote repository publication and GitHub Actions validator verified; browser interaction remains explicitly unverified.
