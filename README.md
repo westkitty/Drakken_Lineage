@@ -9,7 +9,23 @@ The project models Drakken history as two simultaneous inheritance systems:
 
 It also separates **authorial truth** from **in-universe Drakken paleontology**, tracks structural homologies, records confidence and evidence state, and provides a Morphogenesis Compiler for testing whether a proposed descendant can be biologically derived rather than merely styled as "Drakken."
 
-## Run
+## GitHub Pages
+
+Production URL:
+
+`https://westkitty.github.io/Drakken_Lineage/`
+
+Deployment is handled by `.github/workflows/pages.yml`. The workflow validates the project, stages only the browser-facing files, and deploys them with GitHub Pages Actions.
+
+GitHub requires one repository-level setting before the first deployment:
+
+1. Open **Settings → Pages**.
+2. Under **Build and deployment → Source**, choose **GitHub Actions**.
+3. Open **Actions → Deploy GitHub Pages** and run the workflow, or make any site-file commit to `main`.
+
+After that one-time switch, future changes to the site files deploy automatically.
+
+## Run locally
 
 Open `index.html` directly in a modern browser. No build step or server is required.
 
@@ -38,4 +54,5 @@ The seeded dataset contains only source-backed war-era records and explicit unkn
 - `app.js` — interactions, rendering, local state, compiler
 - `data/lineage.js` — canonical/provisional lineage dataset
 - `data/schema.json` — portable record schema
+- `.github/workflows/pages.yml` — GitHub Pages deployment
 - `OPERATIONAL_STATE.md` — current project control plane
