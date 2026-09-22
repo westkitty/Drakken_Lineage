@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#061014">
-  <meta name="description" content="Drakken Lineage: an interactive Three.js evolutionary lineage laboratory for Starsilk.">
-  <title>Drakken Lineage</title>
+  <meta name="theme-color" content="#03080a">
+  <meta name="description" content="Drakken Lineage — a living Three.js evolutionary museum for Starsilk's Drakken.">
+  <title>Drakken Lineage // Living Archive</title>
   <link rel="stylesheet" href="./styles.css">
   <script type="importmap">
     {
@@ -18,23 +18,27 @@
 </head>
 <body>
   <a class="skip-link" href="#workspace">Skip to workspace</a>
+  <div id="ambientVeil" class="ambient-veil" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="app-shell">
-    <header class="topbar">
+    <header class="topbar glass-edge">
       <div class="brand-block">
-        <div class="brand-kicker">STARSILK / DRAKKEN BIOARCHIVE</div>
+        <div class="brand-kicker"><span class="pulse-dot"></span> STARSILK / DRAXIS BIOARCHIVE</div>
         <h1>DRAKKEN <span>//</span> LINEAGE</h1>
+        <p>Living evolutionary museum · programmable ancestry · all documented strains resident</p>
       </div>
       <div class="status-strip" aria-label="Dataset status">
-        <span><b id="strainCount">0</b> strain records</span>
-        <span><b id="networkResidentCount">0/0</b> resident in 3D</span>
-        <span><b id="coreCount">0</b> core-count roster</span>
-        <span><b id="expandedCount">0</b> integrated expansion</span>
-        <span class="seal warning-seal">CATALOG CONFLICT TRACKED</span>
+        <span><b id="strainCount">0</b> strains</span>
+        <span><b id="networkResidentCount">0/0</b> 3D resident</span>
+        <span><b id="visualMatchCount">0</b> Drive-calibrated studies</span>
+        <span><b id="coreCount">0</b> core-count</span>
+        <span class="seal warning-seal">CATALOG CONFLICT PRESERVED</span>
       </div>
     </header>
 
-    <aside class="rail" aria-label="Primary navigation">
+    <aside class="rail glass-edge" aria-label="Primary navigation">
       <nav id="nav"></nav>
+      <div class="rail-divider"></div>
+      <button id="openTour" class="tour-launch" type="button"><span>▶</span> Guided specimen tour</button>
       <div class="rail-note">
         <span class="tiny-label">CENTRAL LAW</span>
         <p>A descendant must carry its history in its body.</p>
@@ -45,34 +49,55 @@
       <section id="view-network" class="view is-active" data-view="network">
         <div class="view-heading network-heading">
           <div>
-            <span class="eyebrow">THREE.JS RETICULATE PHYLOGENY</span>
+            <span class="eyebrow">THREE.JS / RETICULATE PHYLOGENY</span>
             <h2>Orbital Lineage Field</h2>
-            <p class="view-deck">Every documented strain remains resident in the same navigable lineage space. Family focus changes the camera, never the population.</p>
+            <p class="view-deck">All 58 named strains remain inside one moving lineage system. Focus changes attention, never population.</p>
           </div>
           <div class="toolbar network-toolbar">
-            <label class="compact-control">Focus family
-              <select id="networkFocusFamily"><option value="all">All families</option></select>
+            <label class="compact-control">Family
+              <select id="networkFocusFamily"><option value="all">All eight families</option></select>
             </label>
-            <label class="compact-control">Find strain
-              <select id="networkFindStrain"><option value="">Choose strain…</option></select>
+            <label class="compact-control">Strain
+              <select id="networkFindStrain"><option value="">Find one of 58…</option></select>
             </label>
-            <button id="toggleSystemMotion" type="button" aria-pressed="true">System motion: on</button>
-            <button id="toggleCameraOrbit" type="button" aria-pressed="true">Camera orbit: on</button>
-            <button id="resetOrbit" type="button">Reset view</button>
+            <button id="toggleSystemMotion" type="button" aria-pressed="true">Lineage motion</button>
+            <button id="toggleCameraOrbit" type="button" aria-pressed="true">Camera drift</button>
+            <button id="resetOrbit" type="button">Recenter</button>
           </div>
         </div>
+
         <div class="network-layout">
           <div class="graph-panel three-graph-panel panel">
             <div class="network-legend">
-              <span><b>58 / 58</b> strain nodes are loaded simultaneously</span>
-              <span>Drag to orbit · wheel/pinch to zoom · tap a node to inspect</span>
+              <span><b>58 / 58</b> strains physically resident</span>
+              <span>drag orbit · pinch/wheel zoom · tap specimen · double-tap theatre</span>
+            </div>
+            <div class="lineage-hud" aria-hidden="true">
+              <span>BODY DESCENT</span><i></i><span>MACRO INHERITANCE</span><i class="macro"></i><span>DRIVE STUDY</span><i class="study"></i>
             </div>
             <div id="threeStage" class="three-stage" tabindex="0" aria-label="Interactive three-dimensional Drakken lineage field. Use the family and strain selectors for keyboard-accessible focus.">
-              <div id="threeFallback" class="three-fallback" hidden>3D rendering is unavailable in this browser. The complete strain registry remains available in the Compendium Registry view.</div>
+              <div id="threeFallback" class="three-fallback" hidden>WebGL is unavailable. The full 58-strain Atlas and Registry remain usable.</div>
             </div>
           </div>
-          <aside id="inspector" class="inspector panel" aria-live="polite"></aside>
+
+          <aside id="inspector" class="inspector panel specimen-dock" aria-live="polite">
+            <div class="dock-empty"><span class="glyph">◈</span><p>Select any strain in the orbit or Atlas.</p></div>
+          </aside>
         </div>
+      </section>
+
+      <section id="view-atlas" class="view" data-view="atlas">
+        <div class="view-heading">
+          <div><span class="eyebrow">58 NAMED SPECIMENS / ZERO DRAGON-PERSON DEFAULTS</span><h2>Living Specimen Atlas</h2><p class="view-deck">Every strain gets a named morphogram. Drive-matched forms use body-plan cues from named project artwork; the rest remain clearly labeled source-text studies.</p></div>
+          <div class="atlas-stat"><b id="atlasVisibleCount">58</b><span>visible</span></div>
+        </div>
+        <div class="registry-controls panel atlas-controls">
+          <label>Search <input id="atlasSearch" type="search" placeholder="name, topology, function, affinity…"></label>
+          <label>Family <select id="atlasFamily"><option value="all">All families</option></select></label>
+          <label>Study state <select id="atlasStudy"><option value="all">All studies</option><option value="matched">Drive-calibrated</option><option value="procedural">Source-text morphograms</option></select></label>
+          <button id="shuffleAtlas" type="button">Recompose atlas</button>
+        </div>
+        <div id="atlasGrid" class="atlas-grid"></div>
       </section>
 
       <section id="view-registry" class="view" data-view="registry">
@@ -107,22 +132,36 @@
             <label>Macro inheritance<select id="macroSelect"><option value="none">No cross-lineage Macro proposed</option></select></label>
             <div class="form-actions"><button class="primary" type="submit">Compile descendant</button><button type="button" id="clearCompiler">Clear</button></div>
           </form>
-          <div id="compilerOutput" class="panel compiler-output empty-state"><p>Supply ancestry and selection pressure. The compiler will test derivation before describing appearance.</p></div>
+          <div id="compilerOutput" class="panel compiler-output empty-state"><p>Supply ancestry and selection pressure. The compiler tests derivation before appearance.</p></div>
         </div>
       </section>
 
       <section id="view-evidence" class="view" data-view="evidence">
         <div class="view-heading"><div><span class="eyebrow">TWO TRUTHS</span><h2>Evidence & Paleontology</h2></div></div>
+        <div id="visualSourceCard" class="panel source-note"></div>
         <div id="catalogConflictCard" class="panel conflict-card"></div>
         <div class="truth-grid">
-          <article class="panel truth-card"><span class="truth-code">A</span><h3>Authorial truth</h3><p>What the project sources establish outside the fiction. This lane controls canon status and may label gaps UNKNOWN rather than filling them.</p></article>
-          <article class="panel truth-card"><span class="truth-code">D</span><h3>Drakken paleontology</h3><p>What post-Wall scholars could reasonably reconstruct from specimens, traces, archives, Macro evidence, and inferred homology. Consensus may lag authorial truth.</p></article>
+          <article class="panel truth-card"><span class="truth-code">A</span><h3>Authorial truth</h3><p>What project sources establish outside the fiction. This lane controls canon status and may label gaps UNKNOWN.</p></article>
+          <article class="panel truth-card"><span class="truth-code">D</span><h3>Drakken paleontology</h3><p>What post-Wall scholars could reconstruct from specimens, traces, archives, Macro evidence, and inferred homology.</p></article>
         </div>
         <div id="sourceList" class="source-grid"></div>
         <div class="panel evidence-list" id="evidenceList"></div>
       </section>
     </main>
   </div>
+
+  <dialog id="specimenTheatre" class="specimen-theatre" aria-labelledby="theatreTitle">
+    <div class="theatre-shell">
+      <button id="closeTheatre" class="theatre-close" type="button" aria-label="Close specimen theatre">×</button>
+      <div id="theatreVisual" class="theatre-visual"></div>
+      <div id="theatreCopy" class="theatre-copy"></div>
+      <div class="theatre-nav">
+        <button id="theatrePrev" type="button">← Previous</button>
+        <button id="theatreOrbit" type="button">Locate in lineage</button>
+        <button id="theatreNext" type="button">Next →</button>
+      </div>
+    </div>
+  </dialog>
 
   <script type="module" src="./app.js"></script>
 </body>
